@@ -8,11 +8,16 @@ import { PersonService } from '../person.service';
   styleUrls: ['./person-detail.component.css']
 })
 export class PersonDetailComponent implements OnInit {
-
+  submitted = false;
   @Input() person: Person;
   constructor(private personService: PersonService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+    this.savePerson();
   }
 
   savePerson(): void {
