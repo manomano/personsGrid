@@ -1,0 +1,15 @@
+<div>ADD/Edit</div>
+<div class="row">
+  <input type="text" [(ngModel)]="person.firstName" placeholder="First Name">
+
+  <input type="text" [(ngModel)]="person.lastName" placeholder="Last Name">
+
+  <input type="text" [(ngModel)]="person.income" placeholder="Income (e.g. 5555.55)">
+
+  <input type="url" [(ngModel)]="person.avatarURL" placeholder="Avatar URL">
+
+  <input type="button" value="new" (click)="createNew()">
+
+  <input type="button" value="save" (click)="savePerson(person)">
+
+</div>
