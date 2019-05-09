@@ -7,9 +7,24 @@ import { PERSONS } from './mock-persons';
 })
 export class PersonService {
 
-  constructor() { }
+  personsList: Person[];
+  constructor() {
+    this.personsList  = this.getPersons();
+  }
 
   getPersons(): Person[] {
-    return PERSONS;
+    let persons = JSON.parse(localStorage.getItem('personList'));
+    if (!persons ) {
+      persons  = [];
+      localStorage.setItem('personList', JSON.stringify([]));
+    }
+    return persons;
+  }
+
+  savePerson(person: Person): void {
+    const persons = JSON.parse(localStorage.getItem('personList'));
+    persons.push(person);
+    localStorage.setItem('personList', JSON.stringify(persons));
+    this.personsList.push(person);
   }
 }

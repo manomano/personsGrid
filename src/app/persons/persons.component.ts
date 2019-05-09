@@ -30,7 +30,8 @@ export class PersonsComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.persons = this.personService.getPersons();
+    /*this.persons = this.personService.getPersons();*/
+    this.persons = this.personService.personsList;
   }
 
 }
