@@ -22,10 +22,15 @@ export class PersonDetailComponent implements OnInit {
 
   savePerson(): void {
     this.personService.savePerson(this.person);
-    this.createNew();
+    this.reset();
   }
 
   createNew(): void {
+    this.personService.addPerson(this.person);
+    this.reset();
+  }
+
+  reset(): void {
     this.person = new Person();
   }
 

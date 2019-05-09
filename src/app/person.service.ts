@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Person } from './person';
 import { PERSONS } from './mock-persons';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,18 @@ export class PersonService {
 
   savePerson(person: Person): void {
     const persons = JSON.parse(localStorage.getItem('personList'));
+    persons[person.id] = person;
+    localStorage.setItem('personList', JSON.stringify(persons));
+    const found = this.personsList.find(x => x.id === person.id);
+
+    Object.keys(found).forEach((key: string) => {
+      found[key] = person[key];
+    });
+  }
+
+  addPerson(person: Person): void {
+    const persons = JSON.parse(localStorage.getItem('personList'));
+    person.id = persons.length;
     persons.push(person);
     localStorage.setItem('personList', JSON.stringify(persons));
     this.personsList.push(person);
