@@ -35,4 +35,12 @@ export class PersonsComponent implements OnInit {
     this.persons = this.personService.personsList;
   }
 
+  viewPerson(): void {
+
+  }
+
+  deletePerson(person: Person): void {
+    this.personService.deletePerson(person);
+  }
+
 }

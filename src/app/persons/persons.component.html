@@ -6,15 +6,20 @@
 
   <div class="card" *ngFor="let person of persons" (click)="onSelect(person)">
     <!--<div class="card">-->
-      <div style="align-content: center; display: flex;align-items: center; justify-content: center">
-      <div class="row">
-          <div><span class="badge">{{person.firstName}}</span> <span>{{person.lastName}}</span></div>
-          <div>
+      <!--<div style="align-content: center; display: flex;align-items: center; justify-content: center">-->
+      <div class="row mywrapper">
+        <div class="x" (click)="deletePerson(person)">
+        <i class="fa fa-times" aria-hidden="true" style="color:white"></i>
+        </div>
+          <div class="inside">
             <img *ngIf="person.avatarURL" src="{{person.avatarURL}}" style="border-radius:50%; width:80px">
 
             <i *ngIf="!person.avatarURL" class="fa fa-user-circle-o" style="font-size:48px;color:white"></i>
           </div>
-      </div>
+        <div class="inside"><span class="badge">{{person.firstName}}</span> <span>{{person.lastName}}</span></div>
+        <div class="inside">{{person.income}}</div>
+        <div class="inside"><button class="btn btn-primary" (click)="viewPerson(person)">view</button></div>
+     <!-- </div>-->
       </div>
   </div>
     <!--</div>-->

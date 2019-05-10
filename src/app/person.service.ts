@@ -40,4 +40,13 @@ export class PersonService {
     localStorage.setItem('personList', JSON.stringify(persons));
     this.personsList.push(person);
   }
+
+  deletePerson(person: Person): void {
+    const persons = JSON.parse(localStorage.getItem('personList'));
+    const index = persons.findIndex(x => x.id === persons.id);
+    persons.splice(index, 1);
+    localStorage.setItem('personList', JSON.stringify(persons));
+    this.personsList.splice(index, 1);
+
+  }
 }
