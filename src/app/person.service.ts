@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Person } from './person';
 import { PERSONS } from './mock-persons';
 import {forEach} from '@angular/router/src/utils/collection';
@@ -48,5 +49,9 @@ export class PersonService {
     localStorage.setItem('personList', JSON.stringify(persons));
     this.personsList.splice(index, 1);
 
+  }
+
+  getPerson(id: number): Observable<Person> {
+    return of(this.personsList.find(x => x.id === id));
   }
 }
