@@ -2,8 +2,22 @@
 
 
 <h2>My persons</h2>
-<ul>
-  <li *ngFor="let person of persons" (click)="onSelect(person)">
-    <span class="badge">{{person.firstName}}</span> {{person.lastName}}
-  </li>
-</ul>
+<div class="container menu-container">
+
+  <div class="card" *ngFor="let person of persons" (click)="onSelect(person)">
+    <!--<div class="card">-->
+      <div style="align-content: center; display: flex;align-items: center; justify-content: center">
+      <div class="row">
+          <div><span class="badge">{{person.firstName}}</span> <span>{{person.lastName}}</span></div>
+          <div>
+            <img *ngIf="person.avatarURL" src="{{person.avatarURL}}" style="border-radius:50%; width:80px">
+
+            <i *ngIf="!person.avatarURL" class="fa fa-user-circle-o" style="font-size:48px;color:white"></i>
+          </div>
+      </div>
+      </div>
+  </div>
+    <!--</div>-->
+
+
+</div>
