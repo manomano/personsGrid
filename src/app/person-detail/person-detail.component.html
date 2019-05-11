@@ -1,20 +1,22 @@
-<div>ADD/Edit</div>
+<div style="display: inline-block">
+  <div class="add_edit">ADD/Edit</div>
 
-<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-<div class="row">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  <div class="input-group" style="background: #cfd8dc;">
 
-  <input type="text" [(ngModel)]="person.firstName" name="firstName" placeholder="First Name" #firstName="ngModel"  required pattern="[A-Za-z]+">
+    <input class="form-control" type="text" [(ngModel)]="person.firstName" name="firstName" placeholder="First Name" #firstName="ngModel"  required pattern="[A-Za-z]+">
 
-  <input type="text" [(ngModel)]="person.lastName" placeholder="Last Name" name="lastName" #lastName="ngModel"  required pattern="[A-Za-z]+">
+    <input class="form-control" type="text" [(ngModel)]="person.lastName" placeholder="Last Name" name="lastName" #lastName="ngModel"  required pattern="[A-Za-z]+">
 
-  <input type="number" step="0.01" [(ngModel)]="person.income" placeholder="Income (e.g. 5555.55)" name="income" #income="ngModel"  required>
+    <input class="form-control" type="number" step="0.01" [(ngModel)]="person.income" placeholder="Income (e.g. 5555.55)" name="income" #income="ngModel"  required>
 
-  <input type="url" [(ngModel)]="person.avatarURL" placeholder="Avatar URL" name="avatarURL" #avatarURL ="ngModel" >
+    <input class="form-control" type="url" [(ngModel)]="person.avatarURL" placeholder="Avatar URL" name="avatarURL" #avatarURL ="ngModel" >
 
-  <input type="button" class="btn btn-primary" value="new" (click)="createNew()">
+    <input type="button" class="btn btn-primary" value="new" (click)="createNew()">
 
-  <button type="submit"  class="btn btn-primary"  [disabled]="!f.form.valid">save</button>
-  <button type="button" class="btn btn-primary" (click)="reset()">reset</button>
+    <button type="submit"  class="btn btn-primary"  [disabled]="!f.form.valid">save</button>
+    <button type="button" class="btn btn-primary" (click)="reset()">reset</button>
 
+  </div>
+  </form>
 </div>
-</form>

@@ -17,10 +17,10 @@ export class PersonDetailComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-    if (this.person.id) {
-      this.savePerson();
-    } else {
+    if (typeof(this.person.id) === 'undefined') {
       this.createNew();
+    } else {
+      this.savePerson();
     }
   }
 

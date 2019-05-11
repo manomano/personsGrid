@@ -18,16 +18,40 @@ export class PersonsComponent implements OnInit {
   };*/
   selectedPerson: Person;
   persons: Person[];
+  leftCol: Person[] = [];
+  middleCol: Person[] = [];
+  rightCol: Person[] = [];
   constructor(private personService: PersonService) { }
 
   ngOnInit() {
     this.selectedPerson = new Person();
     this.getHeroes();
+    this.generateColumns();
   }
-
   onSelect(person: Person): void {
     const newPerson = {...person};
     this.selectedPerson = newPerson;
+  }
+
+  generateColumns(): void {
+      const max = Math.max(...this.persons.map(o => o.income), 0);
+      const min = Math.min(...this.persons.map(o => o.income), 0);
+      const range = max - min;
+      const step = Math.floor(range / 3);
+
+      for (const per of this.persons) {
+          if (per.income <= step) {
+             this.leftCol.push(per);
+          }
+
+          if (per.income <= 2 * step && per.income > step) {
+            this.middleCol.push(per);
+          }
+
+          if (per.income > 2 * step) {
+            this.rightCol.push(per);
+          }
+      }
   }
 
   getHeroes(): void {
@@ -35,7 +59,7 @@ export class PersonsComponent implements OnInit {
     this.persons = this.personService.personsList;
   }
 
-  viewPerson(): void {
+  viewPerson(person: Person): void {
 
   }
 

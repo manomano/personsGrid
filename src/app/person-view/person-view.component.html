@@ -1,3 +1,16 @@
-<p>
-  person-view works!
-</p>
+
+
+<div class="jumbotron">
+  <h2 class="display-4">{{person.firstName}}, {{person.lastName}}</h2>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <div class="inside" style="margin: 25px 0 0 0">
+    <img *ngIf="person.avatarURL" src="{{person.avatarURL}}" style="border-radius:50%; width:80px">
+
+    <i *ngIf="!person.avatarURL" class="fa fa-user-circle-o" style="font-size:48px;color:white"></i>
+  </div>
+
+  <hr class="my-4">
+  <p> <span class="badge">income: </span>{{person.income}}</p>
+  <p> <span class="badge">score: </span>{{person.score}}</p>
+
+</div>

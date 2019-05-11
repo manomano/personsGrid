@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, ɵtextBinding} from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Person } from './person';
 import { PERSONS } from './mock-persons';
@@ -32,11 +32,19 @@ export class PersonService {
     Object.keys(found).forEach((key: string) => {
       found[key] = person[key];
     });
+    this.calculate(found);
+  }
+
+  calculate(person: Person): void {
+    let score = 0;
+    person.firstName.split('').map(x => score += x.charCodeAt(0));
+    person.score =  score * 1.5;
   }
 
   addPerson(person: Person): void {
     const persons = JSON.parse(localStorage.getItem('personList'));
     person.id = persons.length;
+    this.calculate(person);
     persons.push(person);
     localStorage.setItem('personList', JSON.stringify(persons));
     this.personsList.push(person);

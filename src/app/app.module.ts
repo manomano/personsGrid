@@ -6,8 +6,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { PersonsComponent } from './persons/persons.component';
-import { AppRoutingModule } from './app-routing.module';
 import { PersonViewComponent } from './person-view/person-view.component';
+
+
+import { AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
