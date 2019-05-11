@@ -21,6 +21,9 @@ export class PersonViewComponent implements OnInit {
     this.getPerson();
   }
 
+  back(): void {
+    this.location.back();
+  }
   getPerson(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.personService.getPerson(id)

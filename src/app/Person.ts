@@ -5,4 +5,5 @@ export class Person {
   avatarURL: string;
   id: number;
   sort: number;
+  score: number;
 }
