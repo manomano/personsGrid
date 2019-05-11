@@ -1,7 +1,7 @@
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
 
 .card{
-  width: 100%;
+ /* width: 100%;*/
  /* min-width: 300px !important;*/
 
   flex-grow: 1;
@@ -12,6 +12,7 @@
   margin: 5px;
   cursor: pointer;
   alignment: center;
+  align-self: flex-start;
 }
 
 
@@ -20,6 +21,7 @@
   justify-content: center;
   height:100%;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .mywrapper{

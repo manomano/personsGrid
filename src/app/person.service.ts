@@ -10,9 +10,37 @@ import {forEach} from '@angular/router/src/utils/collection';
 export class PersonService {
 
   personsList: Person[];
+  leftCol: Person[] = [];
+  middleCol: Person[] = [];
+  rightCol: Person[] = [];
+
   constructor() {
     this.personsList  = this.getPersons();
+    this.generateColumns();
   }
+
+
+  generateColumns(): void {
+    const max = Math.max(...this.personsList.map(o => o.income), 0);
+    const min = Math.min(...this.personsList.map(o => o.income), 0);
+    const range = max - min;
+    const step = Math.floor(range / 3);
+
+    for (const per of this.personsList) {
+      if (per.income <= step) {
+        this.leftCol.push(per);
+      }
+
+      if (per.income <= 2 * step && per.income > step) {
+        this.middleCol.push(per);
+      }
+
+      if (per.income > 2 * step) {
+        this.rightCol.push(per);
+      }
+    }
+  }
+
 
   getPersons(): Person[] {
     let persons = JSON.parse(localStorage.getItem('personList'));
@@ -25,7 +53,8 @@ export class PersonService {
 
   savePerson(person: Person): void {
     const persons = JSON.parse(localStorage.getItem('personList'));
-    persons[person.id] = person;
+    const ind = persons.findIndex(x => x.id === person.id);
+    persons[ind] = person;
     localStorage.setItem('personList', JSON.stringify(persons));
     const found = this.personsList.find(x => x.id === person.id);
 

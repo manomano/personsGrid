@@ -26,37 +26,31 @@ export class PersonsComponent implements OnInit {
   ngOnInit() {
     this.selectedPerson = new Person();
     this.getHeroes();
-    this.generateColumns();
   }
+
+  sort(event): void {
+    const name = event.target.value;
+    if (name === 'default') {
+      return;
+    }
+    if (name === 'income') {
+      this.persons.sort((a, b) => a[name] - b[name]);
+    } else {
+      this.persons.sort((a, b) => (a[name] < b[name]) ? -1 : (a[name] > b[name]) ? 1 : 0);
+    }
+
+  }
+
   onSelect(person: Person): void {
     const newPerson = {...person};
     this.selectedPerson = newPerson;
   }
 
-  generateColumns(): void {
-      const max = Math.max(...this.persons.map(o => o.income), 0);
-      const min = Math.min(...this.persons.map(o => o.income), 0);
-      const range = max - min;
-      const step = Math.floor(range / 3);
-
-      for (const per of this.persons) {
-          if (per.income <= step) {
-             this.leftCol.push(per);
-          }
-
-          if (per.income <= 2 * step && per.income > step) {
-            this.middleCol.push(per);
-          }
-
-          if (per.income > 2 * step) {
-            this.rightCol.push(per);
-          }
-      }
-  }
-
   getHeroes(): void {
-    /*this.persons = this.personService.getPersons();*/
     this.persons = this.personService.personsList;
+    this.leftCol = this.personService.leftCol;
+    this.middleCol = this.personService.middleCol;
+    this.rightCol = this.personService.rightCol;
   }
 
   viewPerson(person: Person): void {
