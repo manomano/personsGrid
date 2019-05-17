@@ -2,21 +2,31 @@
   <div class="add_edit">ADD/Edit</div>
 
   <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-  <div class="input-group" style="background: #cfd8dc;">
+    <div style="height: 70px;text-align: center; background: #cfd8dc;">
+      <div style="display: inline-block; border: 0px solid red; ">
+        <div id="inputContainer">
 
-    <input class="form-control" type="text" [(ngModel)]="person.firstName" name="firstName" placeholder="First Name" #firstName="ngModel"  required pattern="[A-Za-z]+">
+          <input type="text" [(ngModel)]="person.firstName" name="firstName" placeholder="First Name"
+                 #firstName="ngModel" required pattern="[A-Za-z]+">
 
-    <input class="form-control" type="text" [(ngModel)]="person.lastName" placeholder="Last Name" name="lastName" #lastName="ngModel"  required pattern="[A-Za-z]+">
+          <input type="text" [(ngModel)]="person.lastName" placeholder="Last Name" name="lastName" #lastName="ngModel"
+                 required pattern="[A-Za-z]+">
 
-    <input class="form-control" type="number" step="0.01" [(ngModel)]="person.income" placeholder="Income (e.g. 5555.55)" name="income" #income="ngModel"  required>
+          <input type="number" step="0.01" [(ngModel)]="person.income" placeholder="Income (e.g. 5555.55)" name="income"
+                 #income="ngModel" required>
 
-    <input class="form-control" type="url" [(ngModel)]="person.avatarURL" placeholder="Avatar URL" name="avatarURL" #avatarURL ="ngModel" >
+          <input type="url" [(ngModel)]="person.avatarURL" placeholder="Avatar URL" name="avatarURL"
+                 #avatarURL="ngModel">
+          <span style="border: 0px solid red; width: 250px">
+            <input type="button" class="btn btn-primary customBtn" value="new" (click)="createNew()">
 
-    <input type="button" class="btn btn-primary" value="new" (click)="createNew()">
 
-    <button type="submit"  class="btn btn-primary"  [disabled]="!f.form.valid">save</button>
-    <button type="button" class="btn btn-primary" (click)="reset()">reset</button>
 
-  </div>
+          <input type="submit" class="btn btn-primary customBtn" [disabled]="!f.form.valid" value="save">
+          </span>
+          <!--<button type="button" class="btn btn-primary buttonColor" (click)="reset()">reset</button>-->
+        </div>
+      </div>
+    </div>
   </form>
 </div>

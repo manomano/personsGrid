@@ -66,8 +66,9 @@ export class PersonService {
 
   calculate(person: Person): void {
     let score = 0;
-    person.firstName.split('').map(x => score += x.charCodeAt(0));
-    person.score =  score * 1.5;
+    const beginningPosition = 'a'.charCodeAt(0) - 1;
+    person.firstName.split('').forEach(x => score += x.charCodeAt(0) - beginningPosition);
+    person.score =  score + person.income  * 1.5;
   }
 
   addPerson(person: Person): void {

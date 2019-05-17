@@ -1,0 +1,8 @@
+#mother{
+  text-align: center;
+}
+
+#mother:only-child >div{
+  display: inline-block; height:90vh; border-radius: 30px; border:3px solid #F1F1F1; margin: 5px;
+
+}

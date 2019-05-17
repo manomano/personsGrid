@@ -1,11 +1,26 @@
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
 
+
+.menu-container{
+  display: flex;
+  /* justify-content: center;*/
+
+  flex-wrap: wrap;
+  align-items: center;
+
+  /*justify-content: space-between;*/
+  /*flex-direction: row;*/
+
+
+}
+
+
 .card{
  /* width: 100%;*/
  /* min-width: 300px !important;*/
-
-  flex-grow: 1;
-  flex: 1 1 30%;
+  flex-basis: 30%;
+  /*flex-grow: 1;*/
+  /*flex: 0 1 30%;*/
   height: 200px;
   background: #cfd8dc;
   border-radius: 10px;
@@ -13,21 +28,18 @@
   cursor: pointer;
   alignment: center;
   align-self: flex-start;
+
+
 }
 
 
-.menu-container{
-  display: flex;
-  justify-content: center;
-  height:100%;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
+
 
 .mywrapper{
 
   text-align: center; border: 0px solid red; height: 100%;
   position: relative;
+  width: 100%;
 }
 
 
@@ -45,4 +57,9 @@
   border-radius: 50%;
   background: #7b8d93;
   cursor: pointer;
+}
+
+#sel1{
+  background: #cfd8dc;
+
 }
